@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static int score;
     public TextMeshProUGUI scoreText, timertext;
-    public GameObject deathMenu;
+    public GameObject deathMenu,winMenu;
     public GameObject pauseMenu;
     private float counter_time = 60f;
     private float passing_time = 0f;
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("player collider");
 
-            DeathMenu();
+            WinMenu();
         }
 
         if(other.gameObject.tag == "Enemy")
@@ -81,6 +81,12 @@ public class GameManager : MonoBehaviour
     public void DeathMenu()
     {
         deathMenu.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = false;
+    }
+      public void WinMenu()
+    {
+        winMenu.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = false;
     }
